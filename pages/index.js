@@ -8,6 +8,8 @@ const Home = () => {
 
   const [ color, setColor] = useState("#000000")
   const [ title, setTitle] = useState("")
+  const [ num, setNum ] = useState(10)
+
   const submit = (e) => {
     e.preventDefault()
     alert(` ${title}, ${color} `)
@@ -17,7 +19,7 @@ const Home = () => {
 
   return (
     <>
-    <div>
+    <div className={styles.color}>
       <form onSubmit={submit}>
         <input value={title} onChange={(event) => setTitle(event.target.value)} type="text" placeholder="color" />
         <input value={color} onChange={(event) => setColor(event.target.value)} type="color" />
@@ -25,19 +27,21 @@ const Home = () => {
       </form>
     </div>
     
-    <div>
+    <div className={styles.check}>
       <input type='checkbox' value={check} onChange={setCheck}></input>
       <label>{check ? "Checked" : "Not Checked"}</label>
     </div>
 
     <div>
       <h1 className={styles.h1}>{person} </h1>
+      <h1 className={styles.h1}>{num}</h1>
     </div>
 
       <div className={styles.button_container}>
         <button className={styles.button} onClick={ () => setPerson("I'm Guilherme!")}>Person 1</button>
         <button className={styles.button} onClick={ () => setPerson("I'm João!")}>Person 2</button>
         <button className={styles.button} onClick={ () => setPerson("I'm Maria!")}>Person 3</button>
+        <button className={styles.button} onClick={() => setNum(num+10)}>Somar Mais 10</button>
       </div>
     </>
   )
